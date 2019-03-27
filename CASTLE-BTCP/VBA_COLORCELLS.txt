@@ -1,0 +1,17 @@
+Sub Color()
+
+Dim Red As Variant
+Dim Green As Variant
+Dim Blue As Variant
+
+	For Each cell In Selection
+  
+		Red = "&h" & Left(cell.Text, 2)
+		Green = "&h" & Mid(cell.Text, 4, 2)
+		Blue = "&h" & Right(cell.Text, 2)
+
+		cell.Interior.Color = RGB(Red, Green, Blue)
+    
+	Next cell
+  
+End Sub
