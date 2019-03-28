@@ -1,0 +1,159 @@
+https://medium.com/@mapl3sn0w/castle-btcp-puzzle-write-up-f9b2ca111804
+
+######################################################################
+RAW text of write-up
+######################################################################
+Castle-BTCP Puzzle Write-Up
+Go to the profile of mapl3Sn0w
+mapl3Sn0w
+Mar 26
+On March 22nd, 2018, @Castle_CSTL released a puzzle created by CEO Lucasxhy, to celebrate the new partnership between @Castle_CSTL and Bitcoin Private, via this tweet from their Castle Airdrop Platform twitter account:
+ https://twitter.com/Castle_CSTL/status/976943404109189120
+
+
+The image provided in the tweet is an artwork of the BTCP logo.
+
+It was then announced on the same day that, in addition to the 6 BTCP, 5000 castle would also be given out by Lucasxhy to whomever solved the puzzle, via this tweet:
+ https://twitter.com/lucx946/status/976977168810037248
+
+Here is the wallet address that contained the funds (6.0799 BTCP):
+b18nH9ppgkq6A248b3BVg1Y88WUd2mdVwCb
+
+To follow along more easily, you may refer to my GitHub page,
+
+Main page: https://github.com/Mapl3Sn0w
+Castle-BTCP puzzle page: https://github.com/Mapl3Sn0w/Puzzles
+
+GitHub files in my GitHub repository:
+- Original puzzle image in PNG format
+- Excel file presenting my analysis
+- Java code used to extract the artifact pixels from the image to a CSV file
+- VBA code to color in cells based on the extracted data
+
+First step: Overall analysis
+
+The puzzle was self-contained in the PNG format image.
+The size of the image is 11000 pixels by 11000 pixels.
+
+As with any Image puzzle, i looked at the following elements:
+
+Hex data: 
+No trailer data or unusual bytes found (HexEdit)
+Color channels: 
+No hidden data in the color channels (StegSolve)
+Modification to original image size: 
+No manual byte modification to image size (PNG Analyser)
+Exif data: 
+No unusual data in exif data (EXIF)
+Raw pixels:
+No unusual raw data patterns (http://rawpixels.net/)
+The macro image showed large blocks inverted in the middle column.
+
+The micro analysis revealed random artifact pixels in two corridors on the left and right sides of the image and other random anomalies throughout the image (except the middle column). By artifact pixels I am referring to pixels that had a color different than expected based on the surrounding pixels. This is quite difficult to explain in words, so I invite you to consult the files in my GitHub repository.
+
+Private key of transparent B type addresses for BTCP
+
+Before continuing further in solving the puzzle, it was important to better understand the solution format I was aiming for.
+
+The BTCP website provides the option of creating a paper wallet:
+ https://paperwallet.btcprivate.org/
+
+The private key of transparent B type addresses for BTCP:
+
+Starts with K or L
+If the first character is K, the second character is w, x, y or z
+If the first character is L, the second character is 1, 2, 3, 4 or 5
+Has length 52 (wallet import format, compressed public key)
+Contains only base 58 characters
+Here are some wikipedia / wiki references:
+
+Base58 - Wikipedia
+
+Base58 is a group of binary-to-text encoding schemes used to represent large integers as alphanumeric text, introduced…
+en.wikipedia.org	
+List of address prefixes - Bitcoin Wiki
+
+Blockchain-based currencies use encoded strings, which are in a Base58Check encoding with the exception of Bech32…
+en.bitcoin.it	
+Wallet Import Format (WIF) - Bitcoin Wiki
+
+Wallet Import Format (WIF, also known as Wallet Export Format) is a way of encoding a private ECDSA key so as to make…
+en.bitcoinwiki.org	
+Extracting the Artifact pixels
+
+Now that I knew the type of solution I was most likely looking for, the artifact pixels seemed to provide enough data to construct a private key of a transparent B type address.
+
+By scrutinizing the artifact pixels in the image, I was able to deduce that they were present on every 25th pixel row, on the right or on the left side of every 100px by 100px block.
+
+By using java code, the 5 pixels before and after every 100th pixel column were extracted to collect the date in a CSV format file.
+
+The extracted data in Excel was identified by color as follows:
+RRGGBB (where RR, GG and BB are in hexadecimal format)
+
+The resulting cells were colored in using a VBA macro to better visual the color of the extracted image pixels.
+
+The Excel file in my GitHub repository shows the resulting output.
+
+The pixels were separated between artifact pixels to the left of the middle macro column and to the right of the middle macro column.
+
+Pattern in the artifact pixels
+
+Finding the pattern behind the artifact pixels was one of the most difficult parts of the puzzle and required quite a bit of trial and error. After many failed attempts I finally realized that a binary pattern obtained from the artifact pixels resulted in ASCII characters by converting binary to decimal notation, where the binary values 0 and 1 switched for each extracted row.
+
+For each 8 consecutive rows extracted, the pixels aligned in the left corridor were identified as blue and the pixels found between the left corridor and the middle macro column were identified as red in my Excel file. The same exercise was done for the pixels to the right of the middle macro column.
+
+I assigned Blue to the binary value 0 and Red to the binary value 1, where the colors were inverted for the middle row section of the image. Basically, every row change corresponded to a change in binary value between 0 and 1, but I represented them this way in my Excel file to facilitate the work.
+
+Each 8 consecutive rows extracted represented a single base 58 character.
+
+Going left to right and top to bottom, the first characters obtained from the binary pattern were:
+
+Left: 01001100 = L
+Right: 00110101 = 5
+Left: 01000100 = D
+…
+
+The first two ASCII obtained were L and 5, the characters expected in a WIF format address. This was the first clue that I was in the right direction.
+
+Repeating the process, I obtained the following characters, always going left to right and top to bottom:
+L5Dy?V2H6MkZHXQUqyc71??QQxSTtq3X4kycy25xNg6Rs9snNc
++ 2 additional missing base 58 characters
+
+This was another clue that I was in the right direction:
+
+All the letters and numbers were valid base 58 characters
+The three unknown characters identified by a question mark (?) were due to pixel anomalies in the image that did not follow the expected pattern.
+
+I did not find any purpose to the artifact pixels with hexadecimal colors 555280 and C2BED2.
+
+Macro patterns
+
+Although I did not figure out the reason for the macro pattern until the last two characters of the WIF address were solved by brute force, I now understand the purpose behind the inverted macro blocks.
+
+If you consider the inverted macro blocks as 0 and the non-inverted macro blocks as 1, you obtain the following binary pattern from the right middle column:
+
+01001000 & 01101010
+
+When converted to decimal notation and then to ASCII, you obtain the two last characters of the WIF address: Hj
+
+Final step - Brute force the missing characters
+
+The final step eluded me for months, until finally I obtained the help from Arpox to brute force the missing 5 characters.
+
+L5DyzV2H6MkZHXQUqyc71noQQxSTtq3X4kycy25xNg6Rs9snNcHj
+
+The funds were sweeped by Arpox on March 26, 2019.
+
+After reviewing the pixels for the three missing characters z, n and o, I determined that they did not follow the expected pattern and ultimately needed to be solved through brute force.
+
+Final words
+
+A great thanks to Arpox who helped me put this puzzle to rest. 
+Not all Heros wear capes :)
+
+A great thanks as well to Lucasxhy for releasing this awesome puzzle just over one year ago. What better way to celebrate the 1 year anniversary of this partnership than to have it solved today !
+
+Thanks to both @Castle_CSTL and Bitcoin Private for providing the prize funds. I hope to see more puzzles in the future from you both !
+
+Twitter: mapl3Sn0w
+GitHub: https://github.com/Mapl3Sn0w
