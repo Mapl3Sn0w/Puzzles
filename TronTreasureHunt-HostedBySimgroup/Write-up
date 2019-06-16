@@ -1,0 +1,148 @@
+https://medium.com/@mapl3sn0w/tron-simgroup-treasure-hunt-fd694e18d8ff
+
+######################################################################
+Raw text of medium article write-up
+######################################################################
+
+Tron — SimGroup Treasure Hunt
+Social Media Treasure Hunt Release
+
+On May 31st, 2019, SimGroup (@Simgroup3) released a social media treasure hunt for a tron wallet in this tweet:
+https://twitter.com/Simgroup3/status/1134592309356630016
+
+The details of the treasure hunt can be found here: https://cryptocurrencyexchange.home.blog/2019/05/31/tron-starter-wallet/
+
+The wallet address contained TRX and quite a few token types: TF8PW7U9JDk88ivKMgzi5agHnfDbWmskEo
+
+I teamed up with Arpox to collect the clues between June 1st and June 16th to solve the treasure hunt.
+
+Big thanks to @altkween who organized this treasure hunt, to those who deposited tokens from their personal stash and to the sponsors:
+
+CITYUPTAKE
+Community Node
+Tron Society
+FriendsterIo
+
+List of Clues and Solutions
+Here is the list of clues released on different telegram channels, twitter posts and Friendster posts, with their corresponding solutions,
+
+Answer provided directly without any clue
+Answer is 5
+Slang for date, 2 characters
+Answer is d8
+“The King” was born on this day of January
+Answer is 8 (Elvis Presley)
+Photo of Charles Barkley
+Answer is cb (initials of his name)
+Bryan Adams reminisced about this summer in his famous song
+Answer is 69 (Summer of ‘69)
+Answer provided directly without any clue
+Answer is c5d
+Photo of 4 famous personalities
+Answer is ed (all named ed)
+Unreleased before solve
+Answer is 0
+Infinity
+Answer is 8 (infinity sign at the vertical)
+First letter of the first name of redpillblue1
+Answer is d (Dave)
+#11 is the same as #21
+Answer is 0
+The first letter in the first name of SIMc’s project developer from Dubai
+Answer is f (Furkaan)
+How many strokes to get a birdie on a par 5?
+Answer if 4
+The first letter of Mr. Hohnholt’s first name
+Answer is d (David Hohnholt)
+Answer provided directly without any clue
+Answer is 1d
+Answer provided directly without any clue
+Answer is 5551
+A heavy silvery white metallic chemical element that rusts easily
+Answer is fe (Iron)
+Finish the sequence- 2022, 3223, 4424, ____
+Answer is 5625 (Pattern: +1+2+0+1)
+Ford Perfect’s best friend Arthur’s last name starts with this letter.
+Answer is d (Arthur Dent)
+Answer provided directly without any clue
+Answer is 2c
+#21 is the same as #32
+Answer is 0
+LISTEN! The person who brought you Kilgore Trout and Billy Pilgrim was born on this day in November.
+Answer is 11 (Kurt Vonnegut)
+#23 is the same as #9
+Answer is 8
+The amount of letters in the first name of the founder of tron
+Answer is 6 (Justin)
+26–25=24
+Answer is 3 (#26 is 9 and #24 is 6)
+The month Bilbo Baggins was originally introduced to the world
+Answer is 9 (21 sept 1937)
+MC²
+Answer is e
+The project on tron that includes a trade desk starts with this letter
+Answer is c (CityUptake)
+The month Justin Sun was born
+Answer is 7
+The first letter of my given name
+Answer is a (Angela)
+Answer posted in the twitter bio of @Altkween
+Answer is e
+#32 is the same as #21
+Answer is 0
+Bupkiss
+Answer is 0
+1,2,2,4,3,6,_,_
+Answer is 48 (Pattern: +1–0+2–1+3–2+4)
+I’m here to start eternity
+Sitting twice within a tree
+Once within a rolling sea
+The end of time I’ll always be
+Answer is e
+How many time does the letter F appear in the private key
+Answer is 4
+The second letter of @bondibox’s real first name.
+Answer is a (Jason)
+Answer provided directly without any clue
+Answer is 5
+How many times does the letter H appear in @dholt_EP last name?Answer is 3 (Hohnholt)
+Welcome to the revolution! The only relevant tokenized social site begins with this letter.
+Answer is f (Friendster)
+Is the same as the 3rd character in Jellos exchange wallet
+Answer is 5 ( TL529WxpRh221ZFVd9mgm9S1gsLg55ArUN)
+This clue is a decoy
+OTTFFSS_
+Answer is e (One Two Three Four Five Six Seven Eight)
+Answer provided directly without any clue
+Answer is 2
+Unreleased before solve
+Answer is c
+Answer provided directly without any clue
+Answer is 59f
+Brute force the unknown characters
+On June 16th, the latest clue released was #15 with the characters 1d.
+
+The missing clues at this stage were 8, 42, 45, the character(s) for 11, 21 and 32 that had identical solutions and the character for 36 that was single digit.
+
+There were 3 remaining clues but only 2 missing characters for the private key to the tron wallet. We realized rather quickly that one of the clues was a decoy.
+
+Since the search space was now rather small, it was possible to code this straight in python rather than use another faster programming language.
+
+The python code used can be found in my Github at the following link:
+Mapl3sn0w’s Github
+
+Private Key
+The final private key for the tron wallet was the following: 5d88cb69c5ded08d0f4d1d5551fe5625d2c0118639ec7ae0048e4a53f5e2c59f
+
+Tronscan.org allows for a quick wallet import using a private key.
+
+I quickly logged into the wallet and transferred out the contents to my addy.
+
+Final Words
+Again a big thanks to all those who made this treasure hunt possible and to Arpox for the collaboration.
+
+Looking forward to the next one !
+
+Cheers.
+
+Mapl3sn0w
